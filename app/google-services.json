@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "333095253840",
+    "project_id": "recipe-mobile-application",
+    "storage_bucket": "recipe-mobile-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333095253840:android:31add6497dac8626205e55",
+        "android_client_info": {
+          "package_name": "com.example.foodieapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkB3qlPQ-Sg9Z62ZN6W9Fs_Gn8jt7Qq7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
