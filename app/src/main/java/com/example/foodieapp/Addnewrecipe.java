@@ -42,14 +42,12 @@ public class Addnewrecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addnewrecipe);
 
-        // Initialize Firebase components
         firebaseDatabase = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
-        // Link views from XML layout
         recipeNameEditText = findViewById(R.id.edit_recipe_name);
         kcalEditText = findViewById(R.id.edit_kcal);
         instructionsEditText = findViewById(R.id.edit_instructions);
@@ -58,7 +56,6 @@ public class Addnewrecipe extends AppCompatActivity {
         chooseVideoButton = findViewById(R.id.choose_video_button);
         imageView12 = findViewById(R.id.imageView12);
 
-        // Handling image selection by tapping ImageView
         ActivityResultLauncher<Intent> imagePickerLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -77,7 +74,9 @@ public class Addnewrecipe extends AppCompatActivity {
             imagePickerLauncher.launch(intent);
         });
 
-        // Handling video selection
+        ImageView backArrow = findViewById(R.id.back_button);
+        backArrow.setOnClickListener(v -> onBackPressed());
+
         ActivityResultLauncher<Intent> videoPickerLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -96,7 +95,6 @@ public class Addnewrecipe extends AppCompatActivity {
             videoPickerLauncher.launch(intent);
         });
 
-        // Submit button action to store data
         submitButton.setOnClickListener(v -> {
             String recipeName = recipeNameEditText.getText().toString().trim();
             String kcalValue = kcalEditText.getText().toString().trim();
@@ -108,15 +106,12 @@ public class Addnewrecipe extends AppCompatActivity {
                 return;
             }
 
-            // Upload Image to Firebase Storage
             StorageReference imageRef = storageReference.child("recipes/" + currentUser.getUid() + "/images/" + System.currentTimeMillis() + ".jpg");
             imageRef.putFile(imageUri).addOnSuccessListener(taskSnapshot -> {
                 imageRef.getDownloadUrl().addOnSuccessListener(imageDownloadUrl -> {
-                    // After Image upload, upload Video
                     StorageReference videoRef = storageReference.child("recipes/" + currentUser.getUid() + "/videos/" + System.currentTimeMillis() + ".mp4");
                     videoRef.putFile(videoUri).addOnSuccessListener(taskSnapshot1 -> {
                         videoRef.getDownloadUrl().addOnSuccessListener(videoDownloadUrl -> {
-                            // Store Recipe Data in Realtime Database
                             recipeRef = firebaseDatabase.getReference("recipes").child(currentUser.getUid()).push();
 
                             Map<String, Object> recipeData = new HashMap<>();
@@ -129,7 +124,8 @@ public class Addnewrecipe extends AppCompatActivity {
 
                             recipeRef.setValue(recipeData).addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(Addnewrecipe.this, "Recipe submitted successfully", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(Addnewrecipe.this, submit_thankyou.class);
+                                    startActivity(intent);
                                     clearForm();
                                 } else {
                                     Toast.makeText(Addnewrecipe.this, "Failed to submit recipe", Toast.LENGTH_SHORT).show();
@@ -142,7 +138,6 @@ public class Addnewrecipe extends AppCompatActivity {
         });
     }
 
-    // Helper method to clear the form after submission
     private void clearForm() {
         recipeNameEditText.setText("");
         kcalEditText.setText("");

@@ -45,4 +45,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+    implementation ("androidx.media3:media3-exoplayer-dash:1.3.1")
+
+
+
+
 }

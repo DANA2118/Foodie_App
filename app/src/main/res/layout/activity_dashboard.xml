@@ -1,11 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/nnn"
     tools:context=".Dashboard">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <TextView
+      android:id="@+id/textView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="8dp"
+      android:text="All Recipes"
+      android:textSize="25sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toTopOf="@id/search_bar"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+
+  <EditText
+      android:id="@+id/search_bar"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="50dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="16dp"
+      android:background="@drawable/input_bg"
+      android:drawableStart="@android:drawable/ic_menu_search"
+      android:hint="Search"
+      android:padding="12dp"
+      android:textSize="16sp"
+      app:layout_constraintBottom_toTopOf="@+id/featured_recipe_card"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <androidx.cardview.widget.CardView
+      android:id="@+id/featured_recipe_card"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="16dp"
+      app:cardCornerRadius="12dp"
+      app:cardElevation="6dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/search_bar">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+      <androidx.viewpager2.widget.ViewPager2
+          android:id="@+id/featured_image_slider"
+          android:layout_width="match_parent"
+          android:layout_height="200dp" />
+
+      <TextView
+          android:id="@+id/featured_recipe_name"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:text="Asian white noodle with extra seafood"
+          android:textSize="18sp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/featured_recipe_time"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="4dp"
+          android:text="20 Min" />
+    </LinearLayout>
+
+  </androidx.cardview.widget.CardView>
+
+
+  <TextView
+      android:id="@+id/textView7"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Recipies"
+      android:textSize="24sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toTopOf="@+id/recipeRecyclerView"
+      app:layout_constraintTop_toBottomOf="@+id/featured_recipe_card"
+      tools:ignore="MissingConstraints"
+      tools:layout_editor_absoluteX="16dp" />
+
+  <ImageButton
+      android:id="@+id/imageButton5"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="182dp"
+      android:layout_marginEnd="182dp"
+      android:layout_marginBottom="23dp"
+      android:backgroundTint="#141414"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/recipeRecyclerView"
+      app:layout_constraintVertical_bias="0.0"
+      app:srcCompat="@drawable/baseline_add_24"
+      tools:ignore="MissingConstraints" />
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recipeRecyclerView"
+      android:layout_width="414dp"
+      android:layout_height="196dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/featured_recipe_card"
+      tools:ignore="MissingConstraints"
+      tools:layout_editor_absoluteX="0dp" />
+
+  <ProgressBar
+      android:id="@+id/progressBar"
+      style="?android:attr/progressBarStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="@+id/recipeRecyclerView"
+      app:layout_constraintEnd_toEndOf="@+id/recipeRecyclerView"
+      app:layout_constraintStart_toStartOf="@+id/recipeRecyclerView"
+      app:layout_constraintTop_toTopOf="@+id/recipeRecyclerView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

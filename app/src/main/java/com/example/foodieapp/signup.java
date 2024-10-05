@@ -36,11 +36,8 @@ public class signup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Comment out EdgeToEdge for debugging
-        // EdgeToEdge.enable(this);
         setContentView(R.layout.activity_signup);
 
-        // Initialize Firebase Authentication and Database references
         mAuth = FirebaseAuth.getInstance();
         signupusername = findViewById(R.id.username);
         signupemail = findViewById(R.id.email);
@@ -55,7 +52,6 @@ public class signup extends AppCompatActivity {
                 String email = signupemail.getText().toString().trim();
                 String password = signuppassword.getText().toString().trim();
 
-                // Validate user inputs
                 if (TextUtils.isEmpty(email)) {
                     signupemail.setError("Email is required");
                     signupemail.requestFocus();
@@ -86,20 +82,17 @@ public class signup extends AppCompatActivity {
                     return;
                 }
 
-                // Create a new user with Firebase Authentication
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Save additional user information to Firebase Realtime Database
                                     FirebaseUser firebaseUser = mAuth.getCurrentUser();
                                     if (firebaseUser != null) {
                                         String userId = firebaseUser.getUid();
                                         database = FirebaseDatabase.getInstance();
                                         reference = database.getReference("users");
 
-                                        // Create a HashMap to store user data
                                         HashMap<String, String> userMap = new HashMap<>();
                                         userMap.put("username", username);
                                         userMap.put("email", email);
@@ -111,10 +104,9 @@ public class signup extends AppCompatActivity {
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if (task.isSuccessful()) {
                                                             Toast.makeText(signup.this, "Signup successful", Toast.LENGTH_SHORT).show();
-                                                            // Redirect to the Sign-In page
                                                             Intent intent = new Intent(signup.this, signin.class);
                                                             startActivity(intent);
-                                                            finish();  // Close the signup activity
+                                                            finish();
                                                         } else {
                                                             Toast.makeText(signup.this, "Database error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                                         }
@@ -122,7 +114,6 @@ public class signup extends AppCompatActivity {
                                                 });
                                     }
                                 } else {
-                                    // If sign up fails, display a message to the user
                                     Toast.makeText(signup.this, "Authentication failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }

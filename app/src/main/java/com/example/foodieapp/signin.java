@@ -33,70 +33,52 @@ public class signin extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Initialize FirebaseAuth before using it
         mAuth = FirebaseAuth.getInstance();
 
-        // Check if the user is already signed in and redirect if necessary
         FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if (currentUser != null) {
-//            // User is signed in, proceed to the next screen
-//            Intent intent = new Intent(getApplicationContext(), Addnewrecipe.class);
-//            startActivity(intent);
-//            finish();  // Close the sign-in activity
-//        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Comment out EdgeToEdge for debugging
-        // EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_signin); // Check if layout file is correct
+        setContentView(R.layout.activity_signin);
 
-        // Initialize Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
 
-        // Bind UI components to variables
-        loginEmail = findViewById(R.id.login_email);  // Email input field
-        loginPassword = findViewById(R.id.login_password);  // Password input field
-        loginButton = findViewById(R.id.signinbtn);  // Sign-In button
-        signupRedirect = findViewById(R.id.signuptext);  // Sign-Up redirect link
+        loginEmail = findViewById(R.id.login_email);
+        loginPassword = findViewById(R.id.login_password);
+        loginButton = findViewById(R.id.signinbtn);
+        signupRedirect = findViewById(R.id.signuptext);
 
-        // Sign-In button click listener
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = loginEmail.getText().toString().trim();
                 String password = loginPassword.getText().toString().trim();
 
-                // Validate email input
                 if (TextUtils.isEmpty(email)) {
                     loginEmail.setError("Email is required");
                     loginEmail.requestFocus();
                     return;
                 }
 
-                // Validate password input
                 if (TextUtils.isEmpty(password)) {
                     loginPassword.setError("Password is required");
                     loginPassword.requestFocus();
                     return;
                 }
 
-                // Attempt to sign in the user with Firebase Authentication
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Sign-in successful, redirect to AddRecipe activity
                                     Toast.makeText(signin.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(signin.this, Addnewrecipe.class);
+                                    Intent intent = new Intent(signin.this, Dashboard.class);
                                     startActivity(intent);
-                                    finish();  // Close the sign-in activity
+                                    finish();
                                 } else {
-                                    // If sign-in fails, show an error message
                                     String errorMessage = Objects.requireNonNull(task.getException()).getMessage();
                                     Toast.makeText(signin.this, "Authentication failed: " + errorMessage, Toast.LENGTH_SHORT).show();
                                 }
@@ -105,7 +87,6 @@ public class signin extends AppCompatActivity {
             }
         });
 
-        // Redirect to sign-up page when clicking on "Sign Up" text
         signupRedirect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

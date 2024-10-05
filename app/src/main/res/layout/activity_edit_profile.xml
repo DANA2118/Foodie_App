@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/asset_1_4e"
+    tools:context=".edit_profile">
+
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="Back"
+        android:src="@drawable/arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="113dp"
+        android:layout_height="111dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/whatsapp_image_2024_10_05_at_14_53_20_ca85017f"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_arrow" />
+
+    <TextView
+        android:id="@+id/greeting2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/profile_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/first_name_label2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Name"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/greeting2" />
+
+    <EditText
+        android:id="@+id/first_name2"
+        android:layout_width="303dp"
+        android:layout_height="50dp"
+        android:background="@drawable/input_bg"
+        android:hint="First Name"
+        android:padding="16dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/first_name_label2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/email_label2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Email"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_name2" />
+
+    <EditText
+        android:id="@+id/email2"
+        android:layout_width="303dp"
+        android:layout_height="50dp"
+        android:background="@drawable/input_bg"
+        android:hint="Email"
+        android:padding="16dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/email_label2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btn_edit_profile2"
+        android:layout_width="168dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#525050"
+        android:textColorLink="#686565"
+        android:text="Edit Profile"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/email2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

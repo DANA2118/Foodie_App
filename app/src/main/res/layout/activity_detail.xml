@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFDAB0"
+    android:orientation="vertical"
+    tools:context=".detail">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        app:srcCompat="@drawable/arrow_back" />
+
+    <TextView
+        android:id="@+id/receipeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Recipe Name"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardImage"
+        android:layout_width="235dp"
+        android:layout_height="235dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/receipeName">
+
+
+        <VideoView
+            android:id="@+id/detailVideo"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardImage2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardImage">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="7dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/whatsapp_image_2024_10_05_at_13_25_47_f6653ee9" />
+
+            <ImageView
+                android:id="@+id/deleteData"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="7dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/whatsapp_image_2024_10_05_at_13_25_47_5bee43f7" />
+
+            <ImageView
+                android:id="@+id/editData"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="7dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/whatsapp_image_2024_10_05_at_13_25_47_a521a6ad" />
+
+            <ImageView
+                android:id="@+id/shareData"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="7dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/whatsapp_image_2024_10_05_at_13_25_47_6c0f9823" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardImage2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/text_bg"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Instructions"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="sans-serif"
+                android:text="Instructions"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Ingredients"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Ingredients"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Kcal"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Kcal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="sans-serif"
+                android:text="Kcal"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Rate This Recipe:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RatingBar
+                android:id="@+id/recipeRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:stepSize="1"
+                android:numStars="5"
+                android:rating="0"
+                android:isIndicator="false" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
